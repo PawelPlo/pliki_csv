@@ -3,8 +3,8 @@ import csv
 
 print(sys.argv)
 
-file_path = "in.csv"
-target_file_path = "out.csv"
+file_path = sys.argv[1]
+target_file_path = sys.argv[2]
 
 content = []
 
