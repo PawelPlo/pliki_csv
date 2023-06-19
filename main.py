@@ -1,7 +1,6 @@
 import sys
 import csv
 
-print(sys.argv)
 
 file_path = sys.argv[1]
 target_file_path = sys.argv[2]
@@ -17,12 +16,17 @@ print('Dane z pliku "in.csv"')
 for row in content:
     print(row)
 
-
-content[int(sys.argv[3])][int(sys.argv[4])] = sys.argv[5]
-content[int(sys.argv[7])][int(sys.argv[6])] = sys.argv[8]
-content[int(sys.argv[10])][int(sys.argv[9])] = sys.argv[11]
-content[int(sys.argv[13])][int(sys.argv[12])] = sys.argv[14]
-
+argumenty_zmian = sys.argv[3:]
+numer_argumentu = 1
+slownik_zmian = {}
+for row in argumenty_zmian:
+    row = row.strip(",")
+    slownik_zmian[numer_argumentu]=row
+    row = row.split(",")
+    for linia in content:
+        for zmiana in row:
+                content[int(row[0])][int(row[1])] = row[2]
+                numer_argumentu += 1
 
 print('\n\nDane do pliku "out.csv"')
 for row in content:
